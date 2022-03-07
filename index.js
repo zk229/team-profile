@@ -28,7 +28,10 @@ function askIntern() {
 
 // Create the HTML document
 function finalize() {
-    console.log(teamList);
+    fs.writeFile("./dist/index.html", generatePage.generate(teamList), err => {
+        if(err) throw err;
+        console.log("Webpage generated! See the results in the dist folder.");
+    });
 };
 
 // Make a selection to add an engineer, an intern, or to finalize the team
